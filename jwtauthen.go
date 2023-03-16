@@ -97,6 +97,7 @@ func (j jwtAuthen) validateToken(r *http.Request) (claims, error) {
 }
 
 func extractToken(r *http.Request) string {
+	log.Printf("HEADER: %v\n", r.Header)
 	auth := r.Header.Get(headerAuthorization)
 	token := strings.Split(auth, " ")
 	if len(token) != 2 {
