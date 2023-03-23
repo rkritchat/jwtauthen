@@ -13,7 +13,6 @@ import (
 const (
 	login               = "login"
 	register            = "register"
-	ping                = "ping"
 	headerAuthorization = "Authorization"
 	empty               = ""
 )
@@ -37,7 +36,7 @@ func NewJwtAuthen(accessToken string) JwtAuthen {
 
 type claims struct {
 	Email string `json:"email"`
-	Role  string `json:"role"`
+	Role  int    `json:"roleId"`
 	jwt.RegisteredClaims
 }
 
@@ -108,6 +107,5 @@ func extractToken(r *http.Request) string {
 
 func requiredCheck(url string) bool {
 	return !strings.Contains(strings.ToLower(url), login) &&
-		!strings.Contains(strings.ToLower(url), register) &&
-		!strings.Contains(strings.ToLower(url), ping)
+		!strings.Contains(strings.ToLower(url), register)
 }
