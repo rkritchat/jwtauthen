@@ -12,7 +12,7 @@ import (
 
 const (
 	login               = "login"
-	register            = "register"
+	signup              = "signup"
 	refresh             = "refresh"
 	headerAuthorization = "Authorization"
 	empty               = ""
@@ -108,6 +108,6 @@ func extractToken(r *http.Request) string {
 
 func requiredCheck(url string) bool {
 	return !strings.Contains(strings.ToLower(url), login) &&
-		!strings.Contains(strings.ToLower(url), register) &&
+		!strings.Contains(strings.ToLower(url), signup) &&
 		!strings.Contains(strings.ToLower(url), refresh)
 }
